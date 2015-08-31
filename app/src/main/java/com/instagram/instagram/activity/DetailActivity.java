@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -24,6 +25,8 @@ import android.widget.TextView;
 import com.instagram.instagram.R;
 import com.instagram.instagram.adapter.TransitionAdapter;
 import com.instagram.instagram.utils.Utils;
+
+import java.io.ByteArrayOutputStream;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -46,6 +49,17 @@ public class DetailActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_up);
 
         final Bitmap bitmapPhoto = setupPhoto(getIntent().getIntExtra("photo", R.id.photo));
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailActivity.this, FullscreenImageActivity.class);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmapPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("image", byteArray);
+                startActivity(intent);
+            }
+        });
 
         colorize(bitmapPhoto);
         setupText();

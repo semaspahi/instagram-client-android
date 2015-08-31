@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.0.0/jars/classes.jar"
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.github.chrisbanes.photoview/library/1.2.3/jars/classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="15b669fd484d82539a354ccd1f2a08737474e95e">
-        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-4d755106774318eed13c54d874131de05368c5df.jar" />
+        sha1="81aa0e8e77d948204aa6754019c6f3c04dd922e3">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-47e84db4018a6ce939273ebbb375c6195803cafe.jar" />
     </item>
 
 </items>
