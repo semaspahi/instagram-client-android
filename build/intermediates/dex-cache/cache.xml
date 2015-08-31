@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-6b3acb83684c71a24d6d12ff9a1dcc5c45f09b9f.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/design/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8a5238e4bdcd6568b82db669d41817de670586b8">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-9bd7e591c4c574494993d778a10506469e7bd12a.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.0/7ff0e000d1e27e356567f56c92af3b8ab912636f/picasso-2.5.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7ff0e000d1e27e356567f56c92af3b8ab912636f">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/picasso-2.5.0-3c79b06db99478c55344c62d2f6aee3243269b7d.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-82ed757975360998a15c6593ced422262f164e27.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/gson-2.3.1-35e02133bab64461b23d5e0de588c071d59e69bd.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-6d6abeedaf31d64e8538cb6333966d18e00765f5.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="40e7757d9b06db670062ddb3cf5b30c129b2fd8c">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-ae454448dbd8250fa79d0d456785f812f9fde868.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/6.1.0/63735f48b82bcd24cdd33821342428252eb1ca5a/butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/butterknife-6.1.0-833053e270a2dcd49fcb8f1d6d9bb695d7aefd41.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-b533d6f0f43ddff3dbdf388228106e8b1339bafb.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-fd8582548a7ab3dc9f450b7a5e72a707406024e7.jar" />
+    </item>
+
+</items>
