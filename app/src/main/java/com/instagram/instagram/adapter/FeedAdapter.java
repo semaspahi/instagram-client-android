@@ -12,6 +12,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.instagram.instagram.R;
+import com.instagram.instagram.service.model.Media;
+import com.instagram.instagram.utils.Utils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -19,9 +22,6 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import com.instagram.instagram.R;
-import com.instagram.instagram.service.model.Media;
-import com.instagram.instagram.utils.Utils;
 
 public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
@@ -47,17 +47,17 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            final View view = LayoutInflater.from(context).inflate(R.layout.item_photo, parent, false);
-            GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-            layoutParams.height = cellSize;
-            layoutParams.width = cellSize;
+        final View view = LayoutInflater.from(context).inflate(R.layout.item_photo, parent, false);
+        GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
+        layoutParams.height = cellSize;
+        layoutParams.width = cellSize;
 //            layoutParams.setFullSpan(false);
-        return  new PhotoViewHolder(view);
+        return new PhotoViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            bindPhoto((PhotoViewHolder) holder, position);
+        bindPhoto((PhotoViewHolder) holder, position);
     }
 
     private void bindPhoto(final PhotoViewHolder holder, final int position) {
@@ -68,7 +68,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 .into(holder.ivPhoto, new Callback() {
                     @Override
                     public void onSuccess() {
-                        animatePhoto(holder,position);
+                        animatePhoto(holder, position);
                     }
 
                     @Override
@@ -82,11 +82,11 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         holder.ivText.setTag(position);
         holder.ivPhoto.setOnClickListener(this);
 
-        if (mediaList.get(position).getCaption()!=null) {
+        if (mediaList.get(position).getCaption() != null) {
             holder.ivText.setText(mediaList.get(position).getCaption().getText());
         }
 
-      if (lastAnimatedItem < position) lastAnimatedItem = position;
+        if (lastAnimatedItem < position) lastAnimatedItem = position;
     }
 
 
@@ -126,7 +126,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     @Override
     public int getItemCount() {
-        if (mediaList==null){
+        if (mediaList == null) {
             return 0;
         }
         return MIN_ITEMS_COUNT + mediaList.size();
@@ -154,8 +154,8 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         public void onItemClick(View v, int position);
 
     }
+
     public void setOnFeedItemClickListener(OnFeedItemClickListener onFeedItemClickListener) {
         this.onFeedItemClickListener = onFeedItemClickListener;
     }
-
 }

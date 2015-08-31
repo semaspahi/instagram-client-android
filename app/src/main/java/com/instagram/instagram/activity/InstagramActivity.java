@@ -3,8 +3,11 @@ package com.instagram.instagram.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,20 +17,23 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import com.instagram.instagram.R;
 import com.instagram.instagram.adapter.FeedAdapter;
 import com.instagram.instagram.service.Instagram;
 import com.instagram.instagram.service.model.Media;
 import com.instagram.instagram.service.model.Popular;
 import com.instagram.instagram.utils.Utils;
+
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -134,5 +140,28 @@ public class InstagramActivity extends AppCompatActivity implements FeedAdapter.
     @Override
     public void onItemClick(View v, int position) {
 
+        ImageView photo = (ImageView) ((View) v.getParent()).findViewById(R.id.photo);
+        if ((photo.getDrawable())==null){
+            Toast.makeText(getApplicationContext(),"Image is still loading.",Toast.LENGTH_LONG).show();
+        }else {
+            Intent intent = new Intent();
+            intent.setClass(this, DetailActivity.class);
+            if (mediaList.get(position).getCaption() != null) {
+                intent.putExtra("text", mediaList.get(position).getCaption().getText());
+            }
+            intent.putExtra("photo", R.id.photo);
+            intent.putExtra("activity", "main");
+            sPhotoCache.put(intent.getIntExtra("photo", -1), ((BitmapDrawable) photo.getDrawable()).getBitmap());
+
+            // Check if we're running on Android 5.0 or higher
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ((ViewGroup) photo.getParent()).setTransitionGroup(false);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, photo, "photo");
+                startActivity(intent, options.toBundle());
+            } else {
+                // Implement this feature without material design
+                startActivity(intent);
+            }
+        }
     }
 }
