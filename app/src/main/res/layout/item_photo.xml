@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.instagram.instagram.view.SquaredFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/flRoot"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:layout_margin="1dp" />
+        <TextView
+            android:id="@+id/ivText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:textColor="@android:color/white"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:padding="3dp"
+            android:maxLines="2"
+            android:fontFamily="sans-serif-bold"
+            android:layout_marginRight="1dp"
+            android:layout_alignParentBottom="true"
+       />
+
+    </RelativeLayout>
+
+
+</com.instagram.instagram.view.SquaredFrameLayout>
