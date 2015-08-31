@@ -152,9 +152,11 @@ public class DetailActivity extends AppCompatActivity {
 
     private Bitmap setupPhoto(int resource) {
 
-        Bitmap bitmap = null;
+        Bitmap bitmap;
         if (getIntent().getStringExtra("activity").equals("main")){
             bitmap = InstagramActivity.sPhotoCache.get(resource);
+        }else{
+            bitmap = SearchActivity.sPhotoCache.get(resource);
         }
         ((ImageView) findViewById(R.id.photo)).setImageBitmap(bitmap);
         return bitmap;

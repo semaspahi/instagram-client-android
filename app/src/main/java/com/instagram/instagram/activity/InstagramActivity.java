@@ -34,6 +34,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -135,6 +136,15 @@ public class InstagramActivity extends AppCompatActivity implements FeedAdapter.
         if (Utils.isAndroid5()) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.style_color_primary_dark));
         }
+    }
+
+    @OnClick(R.id.fabSearch)
+    public void onSearchClick() {
+        int[] startingLocation = new int[2];
+        floatingActionButton.getLocationOnScreen(startingLocation);
+        startingLocation[0] += floatingActionButton.getWidth() / 2;
+        SearchActivity.startSearchFromLocation(startingLocation, this);
+        overridePendingTransition(0, 0);
     }
 
     @Override
