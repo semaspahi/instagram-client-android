@@ -3,6 +3,7 @@ package com.instagram.instagram.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.view.Display;
 import android.view.WindowManager;
@@ -44,5 +45,10 @@ public class Utils {
 
     public static boolean isAndroid5() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    public static Typeface getTypeface(Context context){
+        Typeface type = Typeface.createFromAsset(context.getAssets(), "fonts/Billabong.ttf");
+        return type;
     }
 }

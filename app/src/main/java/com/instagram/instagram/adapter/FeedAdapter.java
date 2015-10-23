@@ -1,7 +1,6 @@
 package com.instagram.instagram.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.instagram.instagram.utils.Utils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -26,7 +26,6 @@ import butterknife.InjectView;
 public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
     private static final int MAX_PHOTO_ANIMATION_DELAY = 600;
-    private static final int MIN_ITEMS_COUNT = 0;
     private static final Interpolator INTERPOLATOR = new DecelerateInterpolator();
 
     private final Context context;
@@ -34,24 +33,21 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private final List<Media> mediaList;
 
     private boolean lockedAnimations = false;
-    private long profileHeaderAnimationStartTime = 0;
     private int lastAnimatedItem = 0;
+    private int visibleItemCount = 6;
 
+    private OnFeedListener onFeedListener;
     private OnFeedItemClickListener onFeedItemClickListener;
 
-    public FeedAdapter(Context context, List<Media> mediaList) {
+    public FeedAdapter(Context context) {
         this.context = context;
         this.cellSize = Utils.getScreenWidth(context) / 2;
-        this.mediaList = mediaList;
+        this.mediaList = new ArrayList<>();
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(context).inflate(R.layout.item_photo, parent, false);
-        GridLayoutManager.LayoutParams layoutParams = (GridLayoutManager.LayoutParams) view.getLayoutParams();
-        layoutParams.height = cellSize;
-        layoutParams.width = cellSize;
-//            layoutParams.setFullSpan(false);
         return new PhotoViewHolder(view);
     }
 
@@ -62,7 +58,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     private void bindPhoto(final PhotoViewHolder holder, final int position) {
         Picasso.with(context)
-                .load(mediaList.get(position - MIN_ITEMS_COUNT).getImages().getStandardResolution().getUrl())
+                .load(mediaList.get(position).getImages().getStandardResolution().getUrl())
                 .resize(cellSize, cellSize)
                 .centerCrop()
                 .into(holder.ivPhoto, new Callback() {
@@ -77,29 +73,32 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                     }
                 });
 
-        holder.ivPhoto.setTag(position);
-        holder.flRoot.setTag(position);
-        holder.ivText.setTag(position);
-        holder.ivPhoto.setOnClickListener(this);
-
-        if (mediaList.get(position).getCaption() != null) {
-            holder.ivText.setText(mediaList.get(position).getCaption().getText());
+        if(position == getItemCount() - visibleItemCount) {
+            if(onFeedListener != null) {
+                onFeedListener.onLoadMore();
+            }
         }
 
         if (lastAnimatedItem < position) lastAnimatedItem = position;
     }
 
-
     private void animatePhoto(final PhotoViewHolder viewHolder, final int position) {
+
+        viewHolder.ivPhoto.setTag(position);
+        viewHolder.flRoot.setTag(position);
+        viewHolder.ivText.setTag(position);
+        viewHolder.ivPhoto.setOnClickListener(this);
+        if (mediaList.get(position).getCaption() != null) {
+            viewHolder.ivText.setText(mediaList.get(position).getCaption().getText());
+        }
+
         if (!lockedAnimations) {
             if (lastAnimatedItem == viewHolder.getPosition()) {
                 setLockedAnimations(true);
             }
 
-            long animationDelay = profileHeaderAnimationStartTime + MAX_PHOTO_ANIMATION_DELAY - System.currentTimeMillis();
-            if (profileHeaderAnimationStartTime == 0) {
-                animationDelay = viewHolder.getPosition() * 30 + MAX_PHOTO_ANIMATION_DELAY;
-            } else if (animationDelay < 0) {
+            long animationDelay =   MAX_PHOTO_ANIMATION_DELAY - System.currentTimeMillis();
+             if (animationDelay < 0) {
                 animationDelay = viewHolder.getPosition() * 30;
             } else {
                 animationDelay += viewHolder.getPosition() * 30;
@@ -122,14 +121,24 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         if (onFeedItemClickListener != null) {
             onFeedItemClickListener.onItemClick(view, (Integer) view.getTag());
         }
+        if (onFeedListener != null) {
+            onFeedListener.onItemClick(view, (Integer) view.getTag());
+        }
     }
 
     @Override
     public int getItemCount() {
-        if (mediaList == null) {
-            return 0;
-        }
-        return MIN_ITEMS_COUNT + mediaList.size();
+        return mediaList.size();
+    }
+
+    public void addData(List<Media> mediaList) {
+        this.mediaList.addAll(mediaList);
+        notifyDataSetChanged();
+    }
+
+    public void clearData() {
+        this.mediaList.clear();
+        notifyDataSetChanged();
     }
 
     static class PhotoViewHolder extends RecyclerView.ViewHolder {
@@ -150,9 +159,17 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         this.lockedAnimations = lockedAnimations;
     }
 
-    public interface OnFeedItemClickListener {
-        public void onItemClick(View v, int position);
+    public interface OnFeedListener {
+        void onItemClick(View v, int position);
+        void onLoadMore();
+    }
 
+    public void setOnFeedListener(OnFeedListener onFeedListener) {
+        this.onFeedListener = onFeedListener;
+    }
+
+    public interface OnFeedItemClickListener {
+        void onItemClick(View v, int position);
     }
 
     public void setOnFeedItemClickListener(OnFeedItemClickListener onFeedItemClickListener) {

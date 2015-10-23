@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.instagram.instagram"
@@ -13,10 +13,12 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1\""
+            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1/\""
+            buildConfigField "String", "CLIENT_ID", "\"45ce8faf821f43d6a39f6b61bf677820\""
         }
         release {
-            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1\""
+            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1/\""
+            buildConfigField "String", "CLIENT_ID", "\"45ce8faf821f43d6a39f6b61bf677820\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -24,13 +26,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
-    compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.jakewharton:butterknife:6.1.0'
-    compile 'com.android.support:design:23.0.0'
-    compile 'com.android.support:palette-v7:23.0.0'
-    compile 'com.github.chrisbanes.photoview:library:1.2.3'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:palette-v7:23.0.1'
 }

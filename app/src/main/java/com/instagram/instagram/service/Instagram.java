@@ -1,15 +1,16 @@
 package com.instagram.instagram.service;
 
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import com.instagram.instagram.service.endpoints.MediaEndpoint;
 import com.instagram.instagram.service.endpoints.TagsEndpoint;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public final class Instagram {
-    private MediaEndpoint mediaEndpoint;
+
     private TagsEndpoint tagsEndpoint;
+    private MediaEndpoint mediaEndpoint;
 
     public Instagram() {
     }

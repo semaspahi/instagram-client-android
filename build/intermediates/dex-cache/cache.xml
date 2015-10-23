@@ -2,11 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/exploded-aar/com.github.chrisbanes.photoview/library/1.2.3/jars/classes.jar"
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/converter-gson/2.0.0-beta2/392c3d09e0f5e7087544093cc0cb23bb9c7af5fa/converter-gson-2.0.0-beta2.jar"
         jumboMode="false"
-        revision="22.0.1"
-        sha1="81aa0e8e77d948204aa6754019c6f3c04dd922e3">
-        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/classes-47e84db4018a6ce939273ebbb375c6195803cafe.jar" />
+        revision="23.0.1"
+        sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/converter-gson-2.0.0-beta2-2b62659b4fcf9048290696587765b4fbb352146f.jar" />
+    </item>
+    <item
+        jar="/Users/semaspahi/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/semaspahi/Android Studio Apps/instagram-client-android/app/build/intermediates/pre-dexed/debug/gson-2.3.1-35e02133bab64461b23d5e0de588c071d59e69bd.jar" />
     </item>
 
 </items>
