@@ -13,12 +13,12 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1/\""
-            buildConfigField "String", "CLIENT_ID", "\"45ce8faf821f43d6a39f6b61bf677820\""
+            buildConfigField "String", "API_URL", "\"${api_endpoint}\""
+            buildConfigField "String", "CLIENT_ID", "\"${client_id}\""
         }
         release {
-            buildConfigField "String", "API_URL", "\"https://api.instagram.com/v1/\""
-            buildConfigField "String", "CLIENT_ID", "\"45ce8faf821f43d6a39f6b61bf677820\""
+            buildConfigField "String", "API_URL", "\"${api_endpoint}\""
+            buildConfigField "String", "CLIENT_ID", "\"${client_id}\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
